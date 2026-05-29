@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+
+# Hashcat artifacts (potfile, restore, session, recovered hashes)
+*.potfile
+*.restore
+*.log
+hashcat.potfile
+hashcat.dictstat2
+*.outfile
+*.cracked
+
+# Local wordlists / target files — these can be huge and may be sensitive
+*.txt
+*.dict
+*.wordlist
+*.lst
+!requirements*.txt
+
+# Secrets / tokens that might land in the working dir while testing
+*.fernet
+*.key
+*.pem
+.env
+.env.*
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

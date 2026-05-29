@@ -1,0 +1,21 @@
+# Run with:
+#   docker compose run --rm crack
+#
+# (NOT `docker compose up` — this is an interactive one-shot, not a service.)
+#
+# Requires: Docker Desktop on Windows with WSL2 backend + a recent NVIDIA
+# driver (≥ 535). On Linux: NVIDIA Container Toolkit installed on the host.
+# Verify GPU is visible to Docker with:
+#   docker run --rm --gpus all nvidia/cuda:12.4.1-base-ubuntu22.04 nvidia-smi
+
+services:
+  crack:
+    build: .
+    image: fernet-passphrase-crack:latest
+    # Modern compose-spec GPU access. Equivalent to `--gpus all` on the
+    # docker CLI. Older `deploy.resources.reservations.devices` syntax
+    # is sometimes ignored by `docker compose run`; `gpus: all` works
+    # reliably for one-shot runs.
+    gpus: all
+    stdin_open: true
+    tty: true

@@ -1,0 +1,50 @@
+# Only crack_fernet_passphrase.py is COPY'd into the image, but trimming the
+# build context still speeds up `docker build` and avoids leaking local state.
+
+# VCS
+.git/
+.gitignore
+.gitattributes
+
+# Docs / compose (not needed inside the image)
+README.md
+docker-compose.yml
+.dockerignore
+Dockerfile
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+venv/
+env/
+.venv/
+
+# Hashcat artifacts that may exist locally
+*.potfile
+*.restore
+*.log
+*.outfile
+*.cracked
+hashcat.potfile
+hashcat.dictstat2
+
+# Local wordlists / target files — rockyou is downloaded inside the image
+*.txt
+*.dict
+*.wordlist
+*.lst
+
+# Secrets
+*.fernet
+*.key
+*.pem
+.env
+.env.*
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
